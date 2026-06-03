@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XTech - Home</title>
+  <style>
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --accent: #00e5a0;
+      --accent2: #7b5ea7;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --border: #1e1e2e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,15,0.85);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 6rem 3rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0,229,160,0.1);
+      border: 1px solid rgba(0,229,160,0.3);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: #00ffb2;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Table Section */
+    .section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 3rem 5rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    thead {
+      background: rgba(0,229,160,0.07);
+    }
+
+    th {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 1rem 1.4rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 1rem 1.4rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .status {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .status-active { background: rgba(0,229,160,0.12); color: var(--accent); }
+    .status-beta   { background: rgba(123,94,167,0.15); color: #b388ff; }
+    .status-new    { background: rgba(255,171,0,0.12); color: #ffab00; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">XTECH</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">🚀 Innovating Since 2018</div>
+    <h1>Technology Built for the <span>Future</span></h1>
+    <p>
+      NexaTech delivers cutting-edge software solutions that empower businesses
+      to scale faster, operate smarter, and lead with confidence.
+    </p>
+    <div class="cta-group">
+      <a href="register.html" class="btn btn-primary">Get Started</a>
+      <a href="login.html" class="btn btn-outline">Sign In</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Our Products</h2>
+    <p class="section-sub">A snapshot of our current platform offerings</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Price / Month</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>XCloud Pro</td>
+          <td>Cloud Infrastructure</td>
+          <td>KES 4,500</td>
+          <td><span class="status status-active">Active</span></td>
+        </tr>
+        <tr>
+          <td>XSecure</td>
+          <td>Cybersecurity Suite</td>
+          <td>KES 3,200</td>
+          <td><span class="status status-active">Active</span></td>
+        </tr>
+        <tr>
+          <td>XAnalytics</td>
+          <td>Data & Reporting</td>
+          <td>KES 2,800</td>
+          <td><span class="status status-beta">Beta</span></td>
+        </tr>
+        <tr>
+          <td>XAI Assistant</td>
+          <td>Artificial Intelligence</td>
+          <td>KES 6,000</td>
+          <td><span class="status status-new">New</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    &copy; 2026 XTech Ltd. All rights reserved.
+  </footer>
+
+</body>
+</html>
